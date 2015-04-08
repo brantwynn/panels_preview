@@ -6,7 +6,7 @@ include_once('includes/panels_preview.edit.inc');
  * Implements hook_module_implements_alter()
  */
 function panels_preview_module_implements_alter(&$implementations, $hook) {
-  if ($hook == 'form_alter') {
+  if ($hook == 'form_alter' && isset($implementations['panels_preview'])) {
     $group = $implementations['panels_preview'];
     unset($implementations['panels_preview']);
     $implementations['panels_preview'] = $group;
