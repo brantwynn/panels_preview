@@ -1,7 +1,7 @@
-name = Panopoly Magic
-description = Weaves together the chaos magic.
+name = Panels Preview
+description = Provides a preview when adding and editing panels.
 core = 7.x
-package = Panopoly
+package = Panels
 project = panels_preview
 dependencies[] = ctools
 dependencies[] = fape
