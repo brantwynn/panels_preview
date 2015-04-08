@@ -17,42 +17,6 @@
 }
 
 /**
- * Override of CTools Throbber
- */
-a.ctools-ajaxing,
-input.ctools-ajaxing,
-button.ctools-ajaxing,
-select.ctools-ajaxing {
-  padding-right: 18px !important;
-  background: url(../images/status-active.gif) right center no-repeat !important;
-}
-
-div.ctools-ajaxing {
-  float: left;
-  width: 18px;
-  background: url(../images/status-active.gif) center center no-repeat !important;
-}
-
-.ajax-progress .throbber {
-  display: none;
-}
-
-.ajax-progress-throbber {
-  background-image: url("../images/status-active.gif");
-  background-position: center center;
-  background-repeat: no-repeat;
-  min-height: 16px;
-  opacity: .9;
-  padding: 3px;
-  width: 16px;
-  vertical-align: middle;
-}
-
-.ajax-progress-throbber .message {
-  display: none;
-}
-
-/**
  * Custom styling for Changing Layout Feature
 */
 div.ctools-modal-content div.form-item-categories label {
