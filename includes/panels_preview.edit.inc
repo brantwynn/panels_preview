@@ -1173,8 +1173,8 @@ function panels_preview_form_preview_type_select() {
     '#type' => 'select',
     '#options' => array('split' => 'Split Preview', 'edit' => 'No Preview (form only)', 'full' => 'Full Preview (no form)'),
     '#attributes' => array(
-      'id' => 'panels-preview-form-preview-tabs',
-      'class' => array('widget-preview', 'widget-preview-tabs'),
+      'id' => 'panels-preview-form-preview-select-type',
+      'class' => array('widget-preview', 'widget-preview-select-type'),
     ),
   );
   return drupal_render($selector);
