@@ -41,21 +41,6 @@ function panels_preview_autosubmit_configure(&$element) {
 }
 
 /**
- * Custom submit callback for FAPE enabled stylizer forms.
- */
-function panels_preview_fape_submit(&$form, &$form_state) {
-  // If there isn't a next step save the entity.
-  if ((empty($form_state['triggering_element']['#next']) || !empty($form_state['field']['body'])) && !empty($form_state['entity']) && !empty($form_state['display_cache'])) {
-    entity_save($form_state['entity_type'], $form_state['entity']);
-    $form_state['display_cache']->display->context['panelizer']->data = $form_state['entity'];
-  }
-  // Otherwise we're on step 1, so just run the FAPE submitter.
-  else {
-    fape_field_edit_field_form_submit($form, $form_state);
-  }
-}
-
-/**
  * Add the preview to the form output.
  *
  * It is done here so the form is fully processed.
