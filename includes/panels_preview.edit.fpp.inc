@@ -99,3 +99,16 @@ function panels_preview_form_fieldable_panels_panes_fieldable_panels_pane_conten
     unset($form['reusable']);
   }
 }
+
+/**
+ *  Validator to ensure that reusable entites have titles.
+ */
+function panels_preview_reusable_entity_validate($element, &$form_state, $form) {
+  // If the reusable entity checkbox is selected.
+  if (!empty($form_state['values']['reusable'])) {
+    // Ensure a title is present.
+    if (empty($element['#value'])) {
+      form_error($element, t('If you would like this entity to be reusable, please add a title.'));
+    }
+  }
+}

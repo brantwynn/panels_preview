@@ -107,19 +107,6 @@ function panels_preview_form_panels_edit_style_type_form_alter(&$form, &$form_st
 }
 
 /**
- *  Validator to ensure that reusable entites have titles.
- */
-function panels_preview_reusable_entity_validate($element, &$form_state, $form) {
-  // If the reusable entity checkbox is selected.
-  if (!empty($form_state['values']['reusable'])) {
-    // Ensure a title is present.
-    if (empty($element['#value'])) {
-      form_error($element, t('If you would like this entity to be reusable, please add a title.'));
-    }
-  }
-}
-
-/**
  * Add the preview to the form output.
  *
  * It is done here so the form is fully processed.
