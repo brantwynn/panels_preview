@@ -1,6 +1,7 @@
 <?php
 include_once('includes/panels_preview.add.inc');
 include_once('includes/panels_preview.edit.inc');
+include_once('includes/panels_preview.edit.form_alter.inc');
 
 /**
  * The default list of view modes to exclude from pane configuration forms.
@@ -83,9 +84,8 @@ function panels_preview_theme($existing, $type, $theme, $path) {
  * Implements hook_menu_alter().
  */
 function panels_preview_menu_alter(&$items) {
-  // Include entity_field.inc from ctools to ensure that files can be properly removed 
+  // Include entity_field.inc from ctools to ensure that files can be properly removed
   // from within the panelizer edit forms.
   $items['file/ajax']['file'] = 'entity_field.inc';
   $items['file/ajax']['file path'] = drupal_get_path('module', 'ctools') . '/plugins/content_types/entity_context';
 }
-
