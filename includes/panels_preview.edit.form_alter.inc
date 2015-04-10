@@ -292,3 +292,18 @@ function panels_preview_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 }
+
+/**
+ * Add the preview style selector to the form output.
+ */
+function panels_preview_form_preview_type_select() {
+  $selector = array(
+    '#type' => 'select',
+    '#options' => array('split' => 'Split Preview', 'edit' => 'No Preview (form only)', 'full' => 'Full Preview (no form)'),
+    '#attributes' => array(
+      'id' => 'panels-preview-form-preview-select-type',
+      'class' => array('widget-preview', 'widget-preview-select-type'),
+    ),
+  );
+  return drupal_render($selector);
+}

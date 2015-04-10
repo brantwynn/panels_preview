@@ -74,27 +74,6 @@ function panels_preview_form_post_render_preview($output, $form) {
 }
 
 /**
- * Helper function to get the entity type retrieved by a view
- */
-function panels_preview_get_entity_type($view) {
-  $result = 'node';
-
-  if (isset($view->base_table) && $view->base_table != 'node') {
-    // Find the entity type with the corresponding base table.
-    $base_table = $view->base_table;
-    $entity_types = entity_get_info();
-    foreach ($entity_types as $entity_type => $entity_type_info) {
-      if ($entity_type_info['base table'] == $base_table) {
-        $result = $entity_type;
-        break;
-      }
-    }
-  }
-
-  return $result;
-}
-
-/**
  * Helper function to get view modes
  *
  * @param (optional) string $entity_type
