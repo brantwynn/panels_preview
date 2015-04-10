@@ -250,6 +250,7 @@ function panels_preview_form_alter(&$form, &$form_state, $form_id) {
     'panels_preview_search_facet_content_type_edit_form',
     'panels_edit_style_settings_form',
     'panels_preview_search_search_box_content_type_edit_form',
+    'views_content_views_content_type_edit_form',
   );
   if (in_array($form_id, $forms_to_improve)) {
     // Grab child elements and create the fieldset.
