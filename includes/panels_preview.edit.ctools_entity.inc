@@ -57,7 +57,7 @@ function panels_preview_form_ctools_entity_field_content_type_formatter_options_
     $form['#submit'][] = 'panels_preview_fape_submit';
   }
   // Pre-rende fields into a fieldset.
-  $form['#pre_render'][] = 'panels_preview_panelizer_pre_render';
+  $form['#pre_render'][] = 'panels_preview_ctools_entity_pre_render';
 
   // When moving backwards through form steps, ensure image widgets properly retain their value.
   if (!empty($form_state['field_instance']) && $form_state['triggering_element']['#value'] == 'Back') {
@@ -97,3 +97,39 @@ function panels_preview_form_ctools_entity_field_content_type_formatter_styles_a
     $form['#submit'][] = 'panels_preview_fape_submit';
   }
 }
+
+/**
+ * Implement the "Content Settings" fieldset in a pre-render. This fixes issues with image caused by initially
+ * doing this in a form_alter.
+ *
+ * @see http://drupal.org/node/1567704
+ */
+function panels_preview_ctools_entity_pre_render($element) {
+  $exclude_list = array(
+    'form_id',
+    'form_token',
+    'form_build_id',
+    'buttons',
+  );
+
+  // Add any remaining fields to the content settings fieldset.
+  foreach (element_children($element) as $key) {
+    $value = $element[$key];
+    if (!in_array($key, $exclude_list) && !empty($value['#type']) && $value['#type'] != 'fieldset') {
+      if (empty($element['content_settings'])) {
+        // Add a content settings fieldset.
+        $element['content_settings'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Content Settings'),
+          '#weight' => 1,
+        );
+      }
+
+      $element['content_settings'][$key] = $value;
+      unset($element[$key]);
+    }
+  }
+
+  return $element;
+}
+

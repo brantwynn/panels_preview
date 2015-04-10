@@ -1,5 +1,12 @@
 <?php
 
+include_once('panels_preview.edit.ctools_entity.inc');
+include_once('panels_preview.edit.form_alter.inc');
+include_once('panels_preview.edit.fpp.inc');
+include_once('panels_preview.edit.stylizer.inc');
+include_once('panels_preview.edit.views.inc');
+include_once('panels_preview.edit.views_content.inc');
+
 /**
  * Recursively parse form elements to add special autosubmit handling on a per field-type basis.
  */
@@ -30,41 +37,6 @@ function panels_preview_autosubmit_configure(&$element) {
       panels_preview_autosubmit_configure($element[$child]);
     }
   }
-}
-
-/**
- * Implement the "Content Settings" fieldset in a pre-render. This fixes issues with image caused by initially
- * doing this in a form_alter.
- *
- * @see http://drupal.org/node/1567704
- */
-function panels_preview_panelizer_pre_render($element) {
-  $exclude_list = array(
-    'form_id',
-    'form_token',
-    'form_build_id',
-    'buttons',
-  );
-
-  // Add any remaining fields to the content settings fieldset.
-  foreach (element_children($element) as $key) {
-    $value = $element[$key];
-    if (!in_array($key, $exclude_list) && !empty($value['#type']) && $value['#type'] != 'fieldset') {
-      if (empty($element['content_settings'])) {
-        // Add a content settings fieldset.
-        $element['content_settings'] = array(
-          '#type' => 'fieldset',
-          '#title' => t('Content Settings'),
-          '#weight' => 1,
-        );
-      }
-
-      $element['content_settings'][$key] = $value;
-      unset($element[$key]);
-    }
-  }
-
-  return $element;
 }
 
 /**

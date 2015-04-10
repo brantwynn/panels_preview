@@ -1,12 +1,6 @@
 <?php
 include_once('includes/panels_preview.add.inc');
 include_once('includes/panels_preview.edit.inc');
-include_once('includes/panels_preview.edit.ctools_entity.inc');
-include_once('includes/panels_preview.edit.form_alter.inc');
-include_once('includes/panels_preview.edit.fpp.inc');
-include_once('includes/panels_preview.edit.stylizer.inc');
-include_once('includes/panels_preview.edit.views.inc');
-include_once('includes/panels_preview.edit.views_content.inc');
 
 /**
  * The default list of view modes to exclude from pane configuration forms.
