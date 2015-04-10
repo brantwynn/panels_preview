@@ -1,28 +1,6 @@
 <?php
 
 /**
- * Content panes should not use default system/ajax. Use our own for now.
- */
-function _panels_preview_add_path_to_ajax($element) {
-  if (!empty($element['#ajax']) && !isset($element['#ajax']['path'])) {
-    $element['#ajax']['path'] = 'system/panels-preview';
-  }
-  foreach (element_children($element) as $key) {
-    _panels_preview_add_path_to_ajax($element[$key]);
-  }
-}
-
-/**
- * Ajax callback that just returns the rendered preview.
- */
-function panels_preview_ajax_update_preview($form, $form_state) {
-  if (isset($form_state['values']) && isset($form['#panels_preview_preview_info']['configuration'])) {
-    $form['#panels_preview_preview_info']['configuration'] = $form_state['values'] + $form['#panels_preview_preview_info']['configuration'];
-  }
-  return panels_preview_form_post_render_preview('', $form);
-}
-
-/**
  * Recursively parse form elements to add special autosubmit handling on a per field-type basis.
  */
 function panels_preview_autosubmit_configure(&$element) {

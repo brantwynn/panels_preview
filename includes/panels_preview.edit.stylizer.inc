@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * Implements hook_theme().
+ */
+function panels_preview_theme($existing, $type, $theme, $path) {
+  return array(
+    'panels_preview_stylizer_preview_form' => array(
+      'render element' => 'form',
+    ),
+  );
+}
+
+/**
  * Implementation of hook_form_FORM_ID_alter().
  *
  * Provide customizations for the ctools stylizer edit form.
