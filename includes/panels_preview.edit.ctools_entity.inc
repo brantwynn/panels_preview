@@ -3,7 +3,7 @@
 /**
  * Implementation of hook_form_FORM_ID_alter()
  *
- * Provides customization to entity formatter option form
+ * Provides customization to entity formatter option form.
  */
 function panels_preview_form_ctools_entity_field_content_type_formatter_options_alter(&$form, &$form_state, $form_id) {
 
@@ -82,4 +82,18 @@ function panels_preview_form_ctools_entity_field_content_type_formatter_options_
   // Add a custom submit handler to our preview and submit option
   $form['#submit'][] = 'panels_preview_ctools_content_type_modal_submit';
   $form['buttons']['preview']['#submit'][] = 'panels_preview_ctools_content_type_modal_submit';
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter()
+ *
+ * Provides customization to rendering entity fields as panes.
+ */
+function panels_preview_form_ctools_entity_field_content_type_formatter_styles_alter(&$form, &$form_state, $form_id) {
+  // Push the panels preview submitter onto the front of the submit array.
+  // We need it at the beginning so the entity is saved before the IPE
+  // reloads pane content.
+  if (!empty($form_state['entity'])) {
+    $form['#submit'][] = 'panels_preview_fape_submit';
+  }
 }

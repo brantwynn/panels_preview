@@ -89,15 +89,6 @@ function panels_preview_panelizer_pre_render($element) {
   return $element;
 }
 
-function panels_preview_form_ctools_entity_field_content_type_formatter_styles_alter(&$form, &$form_state, $form_id) {
-  // Push the panels preview submitter onto the front of the submit array.
-  // We need it at the beginning so the entity is saved before the IPE
-  // reloads pane content.
-  if (!empty($form_state['entity'])) {
-    $form['#submit'][] = 'panels_preview_fape_submit';
-  }
-}
-
 /**
  * Custom submit callback for FAPE enabled stylizer forms.
  */
