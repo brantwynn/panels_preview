@@ -6,7 +6,6 @@ include_once('panels_preview.edit.fpp.inc');
 include_once('panels_preview.edit.panels_style.inc');
 include_once('panels_preview.edit.stylizer.inc');
 include_once('panels_preview.edit.views.inc');
-include_once('panels_preview.edit.views_content.inc');
 
 /**
  * Recursively parse form elements to add special autosubmit handling on a per field-type basis.
@@ -72,20 +71,6 @@ function panels_preview_form_post_render_preview($output, $form) {
     $preview['preview']['#markup'] = t('[no preview]');
   }
   return  drupal_render($preview) . $output;
-}
-
-/**
- * Convert with legacy 'nodes' and others (such as 'files') view settings.
- */
-function panels_preview_convert_view_settings($view_settings) {
-  // The 'fields' and 'table' view settings apply to any entity type.
-  if (in_array($view_settings, array('fields', 'table'))) {
-    return $view_settings;
-  }
-
-  // We convert other view settings to 'rendered_entity' (which could be
-  // 'node' or 'files' or others that are specific to an entity type).
-  return 'rendered_entity';
 }
 
 /**
