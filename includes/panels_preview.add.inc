@@ -56,7 +56,16 @@ function panels_preview_process_panels_add_content_modal(&$vars) {
       }
       $content[$title]['title'] = 'Add';
       $legend_title = !empty($title) ? $title : 'Untitled ' . $content[$title]['type_name'];
-      $vars['columns'][0] .= '<fieldset class="collapsed collapsible widget-preview"><legend><div class="widget-preview-title">' . theme('panels_add_content_link', array('renderer' => $vars['renderer'], 'region' => $vars['region'], 'content_type' => $content[$title])) . '</div><span class="fieldset-legend">' . $legend_title . '</span></legend><div class="fieldset-wrapper">' . (!empty($content[$title]['preview']) ? $content[$title]['preview'] : t('No Preview')) . '</div></fieldset>';
+      // Check if there is a preview
+      $classes = 'collapsed';
+      if (!empty($content[$title]['preview'])) {
+        $classes .= ' collapsible';
+      }
+      // Empty, do not allow user to expand preview and update title
+      else {
+        $legend_title .= ' (' . t('No Preview') . ')';
+      }
+      $vars['columns'][0] .= '<fieldset class="' . $classes .' widget-preview"><legend><div class="widget-preview-title">' . theme('panels_add_content_link', array('renderer' => $vars['renderer'], 'region' => $vars['region'], 'content_type' => $content[$title])) . '</div><span class="fieldset-legend">' . $legend_title . '</span></legend><div class="fieldset-wrapper">' . (!empty($content[$title]['preview']) ? $content[$title]['preview'] : t('No Preview')) . '</div></fieldset>';
     }
   }
 }
