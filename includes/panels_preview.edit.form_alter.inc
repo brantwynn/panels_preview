@@ -10,13 +10,13 @@ function panels_preview_form_alter(&$form, &$form_state, $form_id) {
    * entity (i.e. fieldable panels panes) because we cannot reliable regenerate
    * a preview without saving.
    */
-  $ids_to_alter = array(
+  $extra_form_ids_with_preview = array(
     'panels_edit_style_settings_form',
     'panels_edit_style_type_form',
     'ctools_entity_field_content_type_formatter_options',
     'ctools_entity_field_content_type_formatter_styles',
   );
-  if (variable_get('panels_preview_live_preview', 1) && (strpos($form_id, '_content_type_edit_form') || in_array($form_id, $ids_to_alter))) {
+  if (variable_get('panels_preview_live_preview', 1) && (strpos($form_id, '_content_type_edit_form') || in_array($form_id, $extra_form_ids_with_preview))) {
 
     $pane = $form_id == 'panels_edit_style_settings_form' ? $form_state['display']->content[$form_state['pid']] : $form_state['pane'];
     $display = $form_state['display'];
@@ -252,6 +252,9 @@ function panels_preview_form_alter(&$form, &$form_state, $form_id) {
     'panels_preview_search_search_box_content_type_edit_form',
     'views_content_views_content_type_edit_form',
   );
+
+  drupal_alter('panels_preview_forms_to_improve', $forms_to_improve)
+
   if (in_array($form_id, $forms_to_improve)) {
     // Grab child elements and create the fieldset.
     $children = element_children($form);
