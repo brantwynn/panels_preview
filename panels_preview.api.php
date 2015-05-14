@@ -15,7 +15,7 @@
  */
 function hook_panels_preview_forms_to_improve_alter(&$form_ids) {
   // If you added your own content type and want the extra form fields added to
-  // the fieldsets that panopoly_magic creates, you can add the form id of your
+  // the fieldsets that panels_preview creates, you can add the form id of your
   // settings form here.
   $form_ids[] = 'my_module_widget_content_type_edit_form';
 }
