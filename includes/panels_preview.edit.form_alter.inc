@@ -243,8 +243,6 @@ function panels_preview_form_alter(&$form, &$form_state, $form_id) {
     'ctools_entity_field_content_type_formatter_options',
     'ctools_entity_field_content_type_formatter_styles',
     'ctools_entity_form_field_content_type_edit_form',
-    'ctools_node_content_content_type_edit_form',
-    'ctools_node_content_type_edit_form',
     'entity_entity_view_content_type_edit_form',
     'menu_block_menu_tree_content_type_edit_form',
     'panels_preview_search_facet_content_type_edit_form',
