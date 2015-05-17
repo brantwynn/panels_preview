@@ -253,7 +253,7 @@ function panels_preview_form_alter(&$form, &$form_state, $form_id) {
     'views_content_views_content_type_edit_form',
   );
 
-  drupal_alter('panels_preview_forms_to_improve', $forms_to_improve)
+  drupal_alter('panels_preview_forms_to_improve', $forms_to_improve);
 
   if (in_array($form_id, $forms_to_improve)) {
     // Grab child elements and create the fieldset.
