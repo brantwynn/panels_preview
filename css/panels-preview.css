@@ -1,5 +1,6 @@
 /* Panels Preview Styles */
-#modal-content .widget-preview-single.panels-preview-full {
+#modal-content .widget-preview-single.panels-preview-full,
+#modal-content .panels-add-content-modal .panels-section-columns {
   width: 100%;
 }
 

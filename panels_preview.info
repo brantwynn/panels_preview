@@ -4,7 +4,6 @@ core = 7.x
 package = Panels
 project = panels_preview
 dependencies[] = ctools
-dependencies[] = ember_support
 dependencies[] = fape
 dependencies[] = features
 dependencies[] = page_manager
