@@ -255,7 +255,7 @@ function panels_preview_form_alter(&$form, &$form_state, $form_id) {
 
   drupal_alter('panels_preview_forms_to_improve', $forms_to_improve);
 
-  if (in_array($form_id, $forms_to_improve)) {
+  if (in_array($form_id, $forms_to_improve) || fnmatch('ctools_node_*_edit_form', $form_id)) {
     // Grab child elements and create the fieldset.
     $children = element_children($form);
     if (count($children) > 1) {
