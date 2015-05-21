@@ -3,7 +3,6 @@ description = Provides a preview when adding and editing panels.
 core = 7.x
 package = Panels
 project = panels_preview
-version = 7.x-1.0-alpha1
 dependencies[] = ctools
 dependencies[] = fape
 dependencies[] = features
